@@ -1,0 +1,22 @@
+header{
+  height:30%;
+  width:100%;
+  border: 1px solid ;
+  border-color: black;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#titulo{
+  padding: 5%;
+}
+
+
+footer{
+  height:30%;
+  width:100%;
+  border: 1px solid ;
+  border-color: black;
+  margin: 0 auto;
+  text-align: center;
+}
