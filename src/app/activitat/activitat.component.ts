@@ -20,10 +20,10 @@ export class ActivitatComponent {
     });
   }
 
-  generarCodigo() {
-    this.socket.emit('generarCodigo', (args: any)=>{
-      this.codigoGenerado=args
-      console.log(args)
-    } );
+  generarCodi() {
+    this.socket.emit('generarCodigo', '');
+    this.socket.on('nouCode', (code)=>{
+      this.codigoGenerado=code
+    })
   }
 }
