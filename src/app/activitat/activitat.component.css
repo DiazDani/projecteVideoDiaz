@@ -1,22 +1,35 @@
-header{
-  height:30%;
-  width:100%;
-  border: 1px solid ;
-  border-color: black;
-  margin: 0 auto;
-  text-align: center;
+/* Estilos específicos para el componente Activitat */
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
 
-#titulo{
-  padding: 5%;
+h1 {
+  color: #3498db;
+  font-size: 2em;
+  margin-bottom: 20px; /* Ajusta el espacio entre el título y el contenido */
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-footer{
-  height:30%;
-  width:100%;
-  border: 1px solid ;
-  border-color: black;
-  margin: 0 auto;
-  text-align: center;
+label {
+  margin-bottom: 10px;
+}
+
+select, button {
+  padding: 8px;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+video {
+  margin-top: 20px;
 }

@@ -1,13 +1,17 @@
-<header>
-  <div id="titulo">LA EPICA WEB DEL BOBBY</div>
-</header>
+<div class="container">
+  <h1>Trailers</h1>
 
-<body>
-aqui iran los videos varios
-{{codigoGenerado}}
-<button (click)="generarCodigo()">generar codigo</button>
-</body>
+  <div>
+    <label for="videoSelect">Selecciona un video:</label>
+    <select id="videoSelect" [(ngModel)]="selectedVideo" name="selectedVideo">
+      <option *ngFor="let video of videos" [ngValue]="video">{{ video.name }}</option>
+    </select>
+    <button (click)="playSelectedVideo()">Reproducir</button>
+  </div>
 
-<footer>
-  Pagina por Pau Casas y Daniel Diaz
-</footer>
+  <div *ngIf="videoSrc">
+    <video width="640" height="360" controls>
+      <source [src]="videoSrc" type="video/mp4">
+    </video>
+  </div>
+</div>
