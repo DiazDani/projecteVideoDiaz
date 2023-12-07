@@ -10,20 +10,25 @@ import { io } from 'socket.io-client';
   styleUrl: './activitat.component.css'
 })
 export class ActivitatComponent {
-  private socket = io('http://172.30.240.1:8888', { transports : ['websocket'] });
+  private socket = io('http://192.168.56.1:8888', { transports : ['websocket'] });
 
   codigoGenerado: string|undefined;
-
+  codigoCorrecto: boolean | undefined;
   constructor() {
     this.socket.on('hello', (args) => {
       console.log(args);
+    });
+    this.socket.on('nouCode', (code)=>{
+      this.codigoGenerado=code
+    })
+    this.socket.on('codigoCorrecto', (correcto) => {
+      this.codigoCorrecto = correcto;
+      console.log('Código correcto:', correcto);
     });
   }
 
   generarCodi() {
     this.socket.emit('generarCodigo', '');
-    this.socket.on('nouCode', (code)=>{
-      this.codigoGenerado=code
-    })
+
   }
 }

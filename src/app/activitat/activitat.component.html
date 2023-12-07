@@ -3,9 +3,12 @@
 </header>
 
 <body>
-aqui iran los videos varios
-{{codigoGenerado}}
-<button (click)="generarCodi()">generar codigo</button>
+Aquí irán los videos varios
+{{ codigoGenerado }}
+<button (click)="generarCodi()">Generar código</button>
+<div *ngIf="codigoCorrecto !== undefined">
+  Código correcto: {{ codigoCorrecto ? 'Sí' : 'No' }}
+</div>
 </body>
 
 <footer>
