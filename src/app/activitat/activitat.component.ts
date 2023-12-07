@@ -14,6 +14,9 @@ export class ActivitatComponent {
 
   codigoGenerado: string|undefined;
   codigoCorrecto: boolean | undefined;
+  videoSeleccionado: boolean|undefined
+  videos: any[] = [];
+
   constructor() {
     this.socket.on('hello', (args) => {
       console.log(args);
@@ -24,6 +27,11 @@ export class ActivitatComponent {
     this.socket.on('codigoCorrecto', (correcto) => {
       this.codigoCorrecto = correcto;
       console.log('Código correcto:', correcto);
+    });
+
+    this.socket.on('listaVideos', (videoList) => {
+      this.videos = videoList;
+      console.log('Lista de videos actualizada:', this.videos);
     });
   }
 
