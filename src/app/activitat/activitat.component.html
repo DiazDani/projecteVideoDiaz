@@ -1,16 +1,19 @@
 <header>
-  <div id="titulo">LA WEB DEL BOBBY</div>
+  <h1><div id="titulo">LA WEB DEL BOBBY</div></h1>
 </header>
 
 <body>
 
+<h2><p>SELECCIONA UN VIDEO PER GENERAR UN CODI</p></h2>
+
+<div *ngIf="videoSeleccionado==true">  Aquest es el teu codi de verificació:<h3><b>{{codigoGenerado}}</b> </h3> </div>
+
 <div *ngFor="let video of videos">
-  <a (click)="generarCodi()">{{ video.name }}</a>
+
+  <p><a  (click)="generarCodi(video.name)" id="video">{{ video.name }}</a></p>
 
 
-
-
-  <div *ngIf="codigoCorrecto == true">
+  <div *ngIf="codigoCorrecto && videoSeleccionado && video.name === nameVideoseleccionado">
     <video [src]="'http://192.168.56.1:3080/' + video.path" controls></video>
   </div>
 
