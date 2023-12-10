@@ -1,36 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { io, Socket } from 'socket.io-client';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { io } from 'socket.io-client';
 
 @Component({
   selector: 'app-activitat',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './activitat.component.html',
-  styleUrls: ['./activitat.component.css'],
+  styleUrl: './activitat.component.css'
 })
-export class ActivitatComponent implements OnInit {
-  private socket: Socket;
-  public videoSrc: string = '';
-  public videos: any[] = [
-    { name: 'Trailer Moana', path: 'video1' },
-    { name: 'Trailer One Piece', path: 'video2' },
-    { name: 'Trailer EndGame', path: 'video3' },
-    { name: 'Trailer Piratas del caribe', path: 'video4' },
+export class ActivitatComponent {
+  private socket = io('http://172.30.240.1:8888', { transports : ['websocket'] });
 
-  ];
-  public selectedVideo: any;
+  codigoGenerado: string|undefined;
 
   constructor() {
-    this.socket = io('http://localhost:3080');
-  }
-
-  ngOnInit(): void {
-    this.socket.on('file-received', (fileInfo: any) => {
-      console.log('Archivo recibido con éxito:', fileInfo);
-
-      this.videoSrc = `data:${fileInfo.type};base64,${fileInfo.data}`;
+    this.socket.on('hello', (args) => {
+      console.log(args);
     });
   }
 
-  playSelectedVideo(): void {
-    this.socket.emit('play-video', this.selectedVideo.path);
+  generarCodigo() {
+    this.socket.emit('generarCodigo', (args: any)=>{
+      this.codigoGenerado=args
+      console.log(args)
+    } );
   }
 }
