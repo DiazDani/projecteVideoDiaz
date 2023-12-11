@@ -44,10 +44,7 @@ export class ActivitatComponent {
     this.socket.emit('generarCodigo', '');
     this.videoSeleccionado = true;
     this.nameVideoseleccionado = videoName;
-
-
-
-
-
   }
+
+
 }
