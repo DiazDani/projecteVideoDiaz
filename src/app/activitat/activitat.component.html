@@ -8,6 +8,8 @@
 
 <div *ngIf="videoSeleccionado==true">  Aquest es el teu codi de verificació:<h3><b>{{codigoGenerado}}</b> </h3> </div>
 
+
+
 <div *ngFor="let video of videos">
 
   <p><a  (click)="generarCodi(video.name)" id="video">{{ video.name }}</a></p>
@@ -15,7 +17,7 @@
 
   <div *ngIf="codigoCorrecto && videoSeleccionado && video.name === nameVideoseleccionado">
     <video controls>
-      <source src="http://192.168.56.1:8888/{{video.path}}">
+      <source src="http://192.168.17.97:3080/{{video.path}}">
     </video>
   </div>
 
